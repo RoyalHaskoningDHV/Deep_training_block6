@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="col-9">
+    <div class="row-fluid">
+        <p></p>
+        <h2>Green taxi cost viewer</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <form action="/home" method="POST"> 
+            Hour of the day
+            <br>
+            <div>
+                <select name="hour" id="hour">
+                    <option value="now">Voorspel voor de komende 24 uur</option>
+                </select>
+            </div>
+            <br>
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+<div class="row-fluid">
+    {% if url  %}
+    <br>
+    <div class="container">
+        <img src={{url}} alt="Chart" height="500" width="800">
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}
