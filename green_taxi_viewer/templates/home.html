@@ -4,7 +4,7 @@
 <div class="col-9">
     <div class="row-fluid">
         <p></p>
-        <h2>Green taxi cost viewer</h2>
+        <h2>{{ website_title }}</h2>
     </div>
 </div>
 
@@ -15,7 +15,7 @@
             <br>
             <div>
                 <select name="hour" id="hour">
-                    <option value="now">Voorspel voor de komende 24 uur</option>
+                    <option value="now">{{ instruction_button }}</option>
                 </select>
             </div>
             <br>
@@ -29,6 +29,12 @@
     <br>
     <div class="container">
         <img src={{url}} alt="Chart" height="500" width="800">
+    </div>
+    {% endif %}
+    {% if knmi_data  %}
+    <br>
+    <div class="container">
+        knmi_data
     </div>
     {% endif %}
 </div>

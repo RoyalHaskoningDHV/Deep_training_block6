@@ -51,9 +51,31 @@ def create_figure(y):
     fig.savefig('./static/images/price_plot.png')
 
 
+def get_knmi_data():
+    """Verbind met de KNMI Api en haal de data op. Probeer environment variables te
+    gebruiken die je aan docker mee geeft.
+    """
+    pass
+
+
+def plot_knmi_data():
+    """BONUS: Define a plotting function based on the examples above
+    that shows some weather information from the KNMI data. Save the
+    figure in ./static/images and make it appear in the app by changing the
+    url variable.
+    """
+    pass
+
+
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
 def main():
+    """Pas deze functie aan zodat KNMI data wordt getoond op de website.
+    """
+
+    knmi_data = ""
+    instruction_button = "Voorspel de komende 24 uur."
+    website_title = "NYC Green Taxi data viewer"
 
     if request.method == 'POST':
 
@@ -62,10 +84,22 @@ def main():
             hour = dt.datetime.now().hour
 
         create_figure(predict_trip_costs(hour))
-        return render_template('home.html', url='/static/images/price_plot.png')
+        return render_template(
+            'home.html',
+            url='/static/images/price_plot.png',
+            instruction_button=instruction_button,
+            website_title=website_title,
+            knmi_data=knmi_data,
+        )
 
     else:
-        return render_template('home.html', url=None)
+        return render_template(
+            'home.html',
+            url=None,
+            instruction_button=instruction_button,
+            website_title=website_title,
+            knmi_data=knmi_data,
+        )
 
 
 if __name__ == "__main__":
